@@ -1,1 +1,20 @@
-<p>single-user works!</p>
+<div *ngIf="user != null" class="list">
+    <div class="item">
+        <span>Name :</span>
+        <p>{{user.name}}</p>
+    </div>
+    <div class="item">
+        <span>Email :</span>
+        <p>{{user.email}}</p>
+    </div>
+    <div class="item">
+        <span>Bio :</span>
+        <p>{{user.bio}}</p>
+    </div>
+    <div class="item">
+        <span>Occupation :</span>
+        <p>{{user.occupation}}</p>
+    </div>
+</div>
+
+<a routerLink="/users" class="btn">Back</a>
