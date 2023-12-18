@@ -68,7 +68,7 @@ export class UserListComponent implements AfterViewInit {
 
   editUser(user: User) {
     console.log(user);
-    this.router.navigate(['/users/update', user.id]);
+    this.router.navigate(['/update', user.id]);
   }
 
   deleteUser(user: User) {
