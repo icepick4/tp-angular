@@ -1,31 +1,39 @@
+/* Container Styles */
 .list {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    align-items: start;
+    margin: 20px;
 }
 
+.title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Item Styles */
 .item {
     display: flex;
-    flex-direction: row;
-    gap: 5px;
+    flex-direction: column;
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-p {
-    margin: 0;
-}
-
-span {
+/* Item Span Styles */
+.item span {
     font-weight: bold;
+    color: #333;
 }
 
-.btn {
-    margin-top: 50px;
-    margin-bottom: 10px;
-    background-color: #4CAF50;
-    padding: 2px;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-
+/* Item Paragraph Styles */
+.item p {
+    margin-top: 5px;
+    color: #666;
+    margin: 0;
 }

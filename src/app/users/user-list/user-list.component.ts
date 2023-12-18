@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
@@ -12,25 +13,28 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements AfterViewInit {
-    
-    displayedColumns: string[] = ['name', 'email', 'occupation', 'actions'];
-    
-    filterValue = '';
-    
-    //@ViewChild(MatSort) sort: MatSort = new MatSort();
-    @ViewChild(MatPaginator) paginator !: MatPaginator;
+  displayedColumns: string[] = ['name', 'email', 'occupation', 'actions'];
 
-    users = new MatTableDataSource<User, MatPaginator>([]);
+  filterValue = '';
 
-  constructor(private router: Router, private userService: UserService) {}
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  users = new MatTableDataSource<User, MatPaginator>([]);
+
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private _liveAnnouncer: LiveAnnouncer
+  ) {}
 
   applyFilter() {
     this.users.filter = this.filterValue.trim().toLowerCase();
   }
 
-
   ngAfterViewInit() {
     this.users.paginator = this.paginator;
+    this.users.sort = this.sort;
   }
 
   ngOnInit(): void {
@@ -47,8 +51,15 @@ export class UserListComponent implements AfterViewInit {
     ): boolean {
       return data.email.toLowerCase().includes(filter);
     };
+  }
 
-    //this.users.sort = this.sort;
+  /** Announce the change in sort state for assistive technology. */
+  announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
   }
 
   showDetails(user: User) {
@@ -56,7 +67,8 @@ export class UserListComponent implements AfterViewInit {
   }
 
   editUser(user: User) {
-    this.router.navigate(['/update', user.id]);
+    console.log(user);
+    this.router.navigate(['/users/update', user.id]);
   }
 
   deleteUser(user: User) {

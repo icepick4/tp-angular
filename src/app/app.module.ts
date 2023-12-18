@@ -17,6 +17,7 @@ import { AddUserComponent } from './users/add-user/add-user.component';
 import { SingleUserComponent } from './users/single-user/single-user.component';
 import { UpdateUserComponent } from './users/update-user/update-user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
+import { HomeButtonComponent } from './home-button/home-button.component';
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
     AddUserComponent,
     UpdateUserComponent,
     HomeComponent,
+    HomeButtonComponent,
   ],
   imports: [
     BrowserModule,

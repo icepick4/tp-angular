@@ -2,7 +2,7 @@
     <input matInput (input)="applyFilter()" placeholder="Filter" [(ngModel)]="filterValue" />
 </mat-form-field>
 
-<mat-table [dataSource]="users">
+<mat-table [dataSource]="users" matSort (matSortChange)="announceSortChange($event)">
     <!-- Nom Column -->
     <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>

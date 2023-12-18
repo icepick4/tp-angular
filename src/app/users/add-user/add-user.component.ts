@@ -12,6 +12,6 @@ export class AddUserComponent {
   constructor(private userService: UserService) {}
 
   addUser() {
-    this.userService.updateUser(this.user);
+    this.userService.createUser(this.user);
   }
 }

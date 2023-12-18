@@ -1,0 +1,17 @@
+<form (ngSubmit)="updateUser()" *ngIf="user" #userForm="ngForm" class="form-style">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" [(ngModel)]="user.name" name="name" required />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" [(ngModel)]="user.email" name="email" required />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Occupation</mat-label>
+        <input matInput placeholder="Occupation" [(ngModel)]="user.occupation" name="occupation" required />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Update</button>
+</form>
+
+<app-home-button />

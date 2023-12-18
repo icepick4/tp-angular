@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./update-user.component.css'],
 })
 export class UpdateUserComponent implements OnInit {
-  user!: User | null;
+  user!: User;
   constructor(
     private userService: UserService,
     private route: ActivatedRoute
@@ -17,6 +17,9 @@ export class UpdateUserComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.userService.selectUser(id!);
+    this.userService.selectedUser.subscribe((user) => {
+      this.user = user!;
+    });
   }
 
   updateUser() {
