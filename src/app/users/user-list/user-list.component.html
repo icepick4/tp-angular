@@ -2,7 +2,7 @@
     <input matInput (input)="applyFilter()" placeholder="Filter" [(ngModel)]="filterValue" />
 </mat-form-field>
 
-<mat-table [dataSource]="users" matSort>
+<mat-table [dataSource]="users">
     <!-- Nom Column -->
     <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
@@ -40,5 +40,6 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"
+    aria-label="Select page of periodic elements">
 </mat-paginator>

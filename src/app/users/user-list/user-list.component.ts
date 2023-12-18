@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,14 +11,16 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
 })
-export class UserListComponent implements OnInit {
-  users: MatTableDataSource<User> = new MatTableDataSource<User>();
+export class UserListComponent implements AfterViewInit {
+    
+    displayedColumns: string[] = ['name', 'email', 'occupation', 'actions'];
+    
+    filterValue = '';
+    
+    //@ViewChild(MatSort) sort: MatSort = new MatSort();
+    @ViewChild(MatPaginator) paginator !: MatPaginator;
 
-  displayedColumns: string[] = ['name', 'email', 'occupation', 'actions'];
-
-  filterValue = '';
-
-  @ViewChild(MatSort) sort: MatSort = new MatSort();
+    users = new MatTableDataSource<User, MatPaginator>([]);
 
   constructor(private router: Router, private userService: UserService) {}
 
@@ -26,8 +28,6 @@ export class UserListComponent implements OnInit {
     this.users.filter = this.filterValue.trim().toLowerCase();
   }
 
-  // @ts-expect-error
-  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
     this.users.paginator = this.paginator;
@@ -37,6 +37,7 @@ export class UserListComponent implements OnInit {
     this.userService.getUsers();
     this.userService.users.subscribe((data) => {
       //this.users = new MatTableDataSource(data);
+      console.log(data);
       this.users.data = data;
     });
 
@@ -47,7 +48,7 @@ export class UserListComponent implements OnInit {
       return data.email.toLowerCase().includes(filter);
     };
 
-    this.users.sort = this.sort;
+    //this.users.sort = this.sort;
   }
 
   showDetails(user: User) {
