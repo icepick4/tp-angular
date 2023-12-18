@@ -1,6 +1,13 @@
 <mat-form-field>
     <input matInput (input)="applyFilter()" placeholder="Filter" [(ngModel)]="filterValue" />
 </mat-form-field>
+<mat-form-field>
+    <select matNativeControl [(ngModel)]="filterColumn">
+        <option value="name">Name</option>
+        <option value="email">Email</option>
+        <option value="occupation">Occupation</option>
+    </select>
+</mat-form-field>
 
 <mat-table [dataSource]="users" matSort (matSortChange)="announceSortChange($event)">
     <!-- Nom Column -->

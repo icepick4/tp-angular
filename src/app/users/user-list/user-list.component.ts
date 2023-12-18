@@ -14,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserListComponent implements AfterViewInit {
   displayedColumns: string[] = ['name', 'email', 'occupation', 'actions'];
-
+  filterColumn: string = 'email';
   filterValue = '';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -40,16 +40,11 @@ export class UserListComponent implements AfterViewInit {
   ngOnInit(): void {
     this.userService.getUsers();
     this.userService.users.subscribe((data) => {
-      //this.users = new MatTableDataSource(data);
-      console.log(data);
       this.users.data = data;
     });
-
-    this.users.filterPredicate = function (
-      data: User,
-      filter: string
-    ): boolean {
-      return data.email.toLowerCase().includes(filter);
+    this.users.filterPredicate = (data: User, filter: string) => {
+      const columnValue = (data as any)[this.filterColumn];
+      return columnValue.toLowerCase().includes(filter);
     };
   }
 
@@ -67,7 +62,6 @@ export class UserListComponent implements AfterViewInit {
   }
 
   editUser(user: User) {
-    console.log(user);
     this.router.navigate(['/update', user.id]);
   }
 

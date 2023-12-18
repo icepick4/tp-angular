@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -47,6 +48,7 @@ const routes: Routes = [
     MatButtonModule,
     MatPaginatorModule,
     MatInputModule,
+    MatFormFieldModule,
     FormsModule,
     MatTableModule,
     HttpClientModule,
