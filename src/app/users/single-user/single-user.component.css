@@ -1,4 +1,3 @@
-/* Container Styles */
 .list {
     display: flex;
     flex-direction: column;
@@ -7,7 +6,6 @@
 }
 
 
-/* Item Styles */
 .item {
     display: flex;
     flex-direction: column;
@@ -18,13 +16,11 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Item Span Styles */
 .item span {
     font-weight: bold;
     color: #333;
 }
 
-/* Item Paragraph Styles */
 .item p {
     margin-top: 5px;
     color: #666;
