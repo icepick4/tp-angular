@@ -15,6 +15,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeButtonComponent } from './home-button/home-button.component';
 import { HomeComponent } from './home/home.component';
+import { TitleComponent } from './title/title.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { SingleUserComponent } from './users/single-user/single-user.component';
 import { UpdateUserComponent } from './users/update-user/update-user.component';
@@ -30,30 +31,31 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UserListComponent,
-    SingleUserComponent,
-    AddUserComponent,
-    UpdateUserComponent,
-    HomeComponent,
-    HomeButtonComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
-    MatIconModule,
-    MatSortModule,
-    MatButtonModule,
-    MatPaginatorModule,
-    MatInputModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatTableModule,
-    HttpClientModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        UserListComponent,
+        SingleUserComponent,
+        AddUserComponent,
+        UpdateUserComponent,
+        HomeComponent,
+        HomeButtonComponent,
+        TitleComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        RouterModule.forRoot(routes),
+        MatIconModule,
+        MatSortModule,
+        MatButtonModule,
+        MatPaginatorModule,
+        MatInputModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatTableModule,
+        HttpClientModule,
+    ]
 })
 export class AppModule {}
